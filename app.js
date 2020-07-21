@@ -43,9 +43,9 @@ setupRoutes(app);
 //itemSeed();
 //orderSeed();
 
-const port = process.env.Port || '8080'
+const PORT = process.env.PORT || 8080;
 
-app.listen(port, () => {
-    console.log(`server running at port ${port}`);
+app.listen(PORT, () => {
+    console.log(`server running at port ${PORT}`);
     
 })
