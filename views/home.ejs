@@ -1,0 +1,43 @@
+<form action="/items" method="POST">
+    <input type="text" name="items">
+    <button type=Submit>Submit</button>
+</form>
+<% if (searchTerm) {%>
+<h4>Search term: <%= searchTerm%></h4>
+<% } %>
+<% if (itemArr) {%>
+    <% items.forEach((i, index) => {%>
+        <% if (i['NA']) {%> 
+            <h2>Item: <%= itemArr[index]%> not available</h2>
+        <%} else {%>
+            <h2 style="margin-left:10px">Item: <%= itemArr[index]%></h2>
+            <h4>Most popular</h4> 
+            <div style="margin-left: 30px">
+                Name: <%= i['popular'].name%>
+                Rating: <%= i['popular'].rating%>
+                Price: <%= i['popular'].price%>
+                Store: <%= i['popular'].store.name%>
+            </div>
+            
+            <h4>Economical</h4>
+            <div style="margin-left: 30px">
+                Name: <%= i['economical'].name%>
+                Rating: <%= i['economical'].rating%>
+                Price: <%= i['economical'].price%>
+                Store: <%= i['economical'].store.name%>
+            </div>
+
+            <h4>Previously Ordered</h4>
+            <div style="margin-left: 30px">
+                <% if (i['ordered']) {%>
+                    Name: <%= i['ordered'].name%>
+                    Rating: <%= i['ordered'].rating%>
+                    Price: <%= i['ordered'].price%>
+                    Store: <%= i['ordered'].store.name%>
+                <% } else {%>
+                    <h4>Not Previously Ordered</h4>
+                <% } %>
+            </div>
+        <% } %>
+    <% }) %>
+<%} %>
